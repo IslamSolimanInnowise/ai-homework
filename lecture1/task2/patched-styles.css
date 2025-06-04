@@ -1,0 +1,57 @@
+/* styles.css */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    /* Added for good practice */
+    padding: 0;
+    /* Added for good practice */
+    margin: 0;
+    /* Added for good practice */
+}
+
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        /* Assuming this aligns below your nav bar */
+        left: 0;
+        width: 100%;
+        background: #fff;
+        /* Ensures menu has a background */
+
+        /* Initial state for mobile: hidden and off-screen */
+        transform: translateY(-150%);
+        opacity: 0;
+        /* Start fully transparent */
+        visibility: hidden;
+        /* Start hidden and not interactive */
+
+        /* * Transition for properties that change during open/close.
+         * This will also apply when the media query activates if the properties 
+         * (transform, opacity, visibility) differ from their desktop defaults,
+         * causing the initial animation (the "ghosting").
+         * For closing: visibility becomes hidden after 0.3s (matching transform/opacity duration).
+         */
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+    }
+
+    .menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        /* Fully visible */
+        visibility: visible;
+        /* Interactive */
+        /* * Override transition for opening to ensure visibility changes instantly.
+         * For opening: visibility becomes visible immediately (0s delay).
+         */
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0s;
+    }
+}
