@@ -339,7 +339,6 @@ const App: React.FC = () => {
         }
         `}
       </style>
-
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-bold text-gray-800">Users</h1>
       </header>
